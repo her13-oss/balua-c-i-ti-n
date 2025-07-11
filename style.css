@@ -87,6 +87,7 @@ h2 {
   background: #e3f2fd;
   padding: 20px;
   border-radius: 10px;
+text-align: center;   /* ✅ căn giữa lại */
 }
 .footer button {
   margin: 10px;
@@ -242,4 +243,17 @@ h2 {
   margin-top: 10px;
 }
 
-
+.feedback-btn,
+.logout-btn {
+  margin: 10px;
+  background: #0288d1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.feedback-btn a {
+  color: white;
+  text-decoration: none;
+}
