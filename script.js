@@ -153,8 +153,13 @@ function bookParking() {
   }
   if (!selectedLotId) return alert("Vui lòng chọn bãi xe trước!");
   const lot = parkingLots.find(l => l.id === selectedLotId);
+const plate = document.getElementById("plate-number").value.trim(); // ✅ Lấy biển số
+
+  if (!plate) return alert("Vui lòng nhập biển số xe!");
+
   const status = document.getElementById('status');
   const max = lot.capacity * 0.8;
+
   if (lot.bookings >= max) {
     const alternatives = parkingLots
       .filter(l => l.bookings < l.capacity * 0.8)
@@ -164,8 +169,9 @@ function bookParking() {
     return;
   }
   lot.bookings++;
-  bookings.push({ lotId: lot.id, timestamp: Date.now() });
-  status.textContent = `✅ Đặt chỗ thành công tại ${lot.name}.`;
+   bookings.push({ lotId: lot.id, timestamp: Date.now(), plate }); // ✅ Lưu biển số
+
+  status.textContent = `✅ Đặt chỗ thành công tại ${lot.name} cho xe ${plate}.`;
   suggestTime(bookings.length);
   checkCapacity(bookings.length);
   drawMap();
